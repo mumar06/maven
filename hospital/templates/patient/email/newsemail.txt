@@ -1,4 +1,4 @@
-Hello {{first_name}} {{last_name}}, Welcome to Health Care Hospital!
+Hello {{first_name}} {{last_name}}, Welcome to MAVEN!
 Appointment Details
 {{schedule.doctor.first_name}} {{schedule.doctor.last_name}}
 {{schedule.doctor.departments.name}}

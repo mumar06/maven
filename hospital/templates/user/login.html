@@ -1,20 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'User/login.css' %}">
     <title>Maven</title>
 </head>
 <body>
+    <a href="#"><img src="{% static 'media/images/maven-logo.png' %}" alt="Maven"></a>
+    <!-- <a class="navbar-brand" href="#"><img id="logo" src="media/images/maven-logo.png" alt="logo"></a> -->
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <div id="login_box">
+            {% csrf_token %}
+            <label id='ll' for="id_username">Username</label>
+            <br>
+            {{ form.username }}
+            <br>
+            <label for="id_password">Password</label>
+            <br>
+            {{ form.password }}
+            <br>
+            <button type="submit">Sign in</button>
+            <div>
+                <p>Don't have an account?</p>
+                <a href="{% url 'registration' %}">Register Now</a>
+                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+            </div>
+        </div>
     </form>
-    <div>
-        <p>Don't have an account?</p>
-        <a href="{% url 'registration' %}">Register Now</a>
-        <a href="{% url 'password_reset' %}">Forgot Password?</a>
-    </div>
+    
 </body>
 </html>

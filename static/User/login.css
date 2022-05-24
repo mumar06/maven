@@ -1,0 +1,81 @@
+#login_box{
+    background-color: #F6F6F6;; 
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    padding-top: 2pc;
+    border-radius: 0.5pc;
+    margin-top: 1pc;
+    border: 1px solid rgb(182, 182, 182);
+}
+#id_username{
+    margin-top: 0.5pc;
+    margin-bottom: 1.5pc;
+    margin-left: 0.6pc;
+    width: 85%;
+    padding: 8px 10px;
+    border-radius: 0.3pc;
+    border: 1px solid #ccc;
+}
+#id_password{
+    margin-top: 0.5pc;
+    margin-bottom: 1.5pc;
+    margin-left: 0.6pc;
+    width: 85%;
+    padding: 8px 10px;
+    border-radius: 0.3pc;
+    border: 1px solid #ccc;
+}
+label{
+    margin-left: 0.6pc;
+    font-family: 'Times New Roman', Times, serif;
+}
+#link{
+    margin-left: 4pc;
+    text-decoration: none;
+    color: rgb(49, 49, 255);
+    font-size: medium;
+}
+#contact{
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(36, 36, 36);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 90%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-bottom: 1pc;
+    margin-left: 0.8pc;
+    cursor: pointer;
+    border-radius: 3pc;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6pc;
+  width: 20pc;
+  padding: 5px;
+}
+
+#message{
+    border: 1px solid;
+	padding: 15px 10px 15px 30px;
+    margin-left: -40px;
+	max-width: 250px;
+    color: #D8000C;
+	background-color: #FFBABA;
+    border-radius: 0.3pc;
+}

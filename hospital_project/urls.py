@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, logout_then_login, LogoutView
 from django.contrib.auth import views as auth_views
 from hospital import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('administrator/', admin.site.urls),
@@ -17,3 +19,5 @@ urlpatterns = [
     
     path('logout/', LogoutView.as_view(), name='logout'), 
 ]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
