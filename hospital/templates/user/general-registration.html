@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maven</title>
+</head>
+<body>
+    
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <form action="{% url 'feed' %}" method="POST">
+            {% csrf_token %}
+            {{ searchForm.search }}
+        </form>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Gender:</label>
+            {{ form.gender }}
+            <br>
+            <label>Date of Birth:</label>
+            <input type="date" id='id_dob' name='dob'>
+            <br>
+            <label>Contact Number:</label>
+            {{ form.contact_number }}
+            <br>
+            <label>City</label>
+            {{ form.city }}
+            <br>
+            <label>Profile Picture</label>
+            <input type="file" name="image" accept="image/*" id="id_image">
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    
+    <h3>Client registration</h3>
+
+</body>
+</html>

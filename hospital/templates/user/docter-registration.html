@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <title>Maven</title>
+</head>
+<body>
+    
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <form action="{% url 'feed' %}" method="POST">
+            {% csrf_token %}
+            {{ searchForm.search }}
+        </form>
+    </div>
+
+    <div>
+        <form id="DocterForm" method="POST">
+            {% csrf_token %}
+            <label>Occupation:</label>
+            {{ form.occupation }}
+            <br>
+            <label>Educational degrees:</label>
+            {{form.education_degrees}}
+            <br>
+            <label>Skill set:</label>
+            {{form.skill_set}}
+            <br>
+            <label>Clinic location:</label>
+            <input type="text" id='id_clinic_location' name='clinic_location'>
+            <br>
+            <label>Fees:</label>
+            <input type="text" id='id_fees' name='fees'>
+            <br>
+            <label>Experience:</label>
+            <input type="text" id='id_experience' name='experience'>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    
+    <script>
+        $(".education_degrees1").chosen({width: "30%"})
+        
+        $(".skill_set1").chosen({width: "30%"})
+    </script>
+    
+    <h3>Docter registration</h3>
+
+</body>
+</html>

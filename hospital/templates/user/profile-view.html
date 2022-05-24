@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'user/profile-view.css' %}" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <title>Maven</title>
+</head>
+<body>
+    
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <form action="{% url 'feed' %}" method="POST">
+            {% csrf_token %}
+            {{ searchForm.search }}
+        </form>
+        {% if user.is_authenticated %}
+            <p style="display: inline;">Welcome {{ user.first_name }} {{ user.last_name }} !!!</p>       
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'who' %}">Register</a>
+        {% endif %}
+    </div>
+
+    <div id="mySidenav" class="sidepanel">
+        <div>
+            <a href="{% url 'profile-view' %}">General</a>
+        </div>
+        {% if Docterform.occupation.value == None %}
+            <div>
+                <a href="{% url 'password-update' 'GeneralUser' %}">Password</a>
+            </div>
+            <div>
+                <a href="{% url 'payment-update' 'GeneralUser' %}">Payment</a>
+            </div>
+        {% else %}
+            <div>
+                <a href="{% url 'password-update' 'Docter' %}">Password</a>
+            </div>
+            <div>
+                <a href="{% url 'payment-update' 'Docter' %}">Payment</a>
+            </div>
+            <div>
+                <a href="{% url 'timing-update' 'Docter' %}">Timing</a>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-left: 70px;">
+        <h3>Profile View</h3>
+
+        <div style="border: 1px solid black; margin: 5px;">
+            <form id="UserForm" action="{% url 'profile-update' 'User' %}" method="POST">
+                {% csrf_token %}
+                <label>Email Address</label>
+                <input type="text" id='id_email' name='email' value="{{ Userform.email.value }}" readonly>
+                <br>
+                <label>First Name</label>
+                <input type="text" id='id_first_name' name='first_name' value="{{ Userform.first_name.value }}" readonly>
+                <br>
+                <label>Last Name</label>
+                <input type="text" id='id_last_name' name='last_name' value="{{ Userform.last_name.value }}" readonly>
+                <br>
+                <button type="button" onclick="editForm('UserForm','saveOne')">Edit</button>
+                <button type="submit" id="saveOne" style="display: None;">Save</button>
+            </form>
+        </div>
+
+        <div style="border: 1px solid black; margin: 5px;">
+            <form id="GeneralUserForm" action="{% url 'profile-update' 'GeneralUser' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Gender:</label>
+                {{ GeneralUserform.gender }}
+                <input type="text" id='gender' value="{{ GeneralUserform.gender.value }}" readonly>
+                <br>
+                <label>Date of Birth:</label>
+                <input type="date" id='id_dob' name='dob' value="{{ GeneralUserform.dob.value }}" readonly>
+                <br>
+                <label>Contact Number</label>
+                <input type="text" id='id_contact_number' name='contact_number' value="{{ GeneralUserform.contact_number.value }}" readonly>
+                <br>
+                <label>City</label>
+                {{ GeneralUserform.city }}
+                <input type="text" id='city' value="{{ GeneralUserform.city.value }}" readonly>
+                <br>
+                <label>Image</label>
+                <img src="{{object.image.url}}" alt="Meezan Bank Limited" style="width:200px; height:200px; margin: 3px 0px 0px 140px;">
+                <input type="file" name="image" accept="image/*" id="id_image" style="display: None;">
+                <br>
+                <button type="button" onclick="editForm('GeneralUserForm','saveTwo')">Edit</button>
+                <button type="submit" id="saveTwo" style="display: None;">Save</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('id_gender').style.display = 'None';
+            document.getElementById('id_city').style.display = 'None';
+        </script>
+
+
+        {% if Docterform.occupation.value != None %}
+            <div style="border: 1px solid black; margin: 5px;">
+                <form id="DocterForm" action="{% url 'profile-update' 'Docter' %}" method="POST">
+                    {% csrf_token %}
+                    <label>Occupation:</label>
+                    {{ Docterform.occupation }}
+                    <input type="text" id='occupation' value="{{ Docterform.occupation.value }}" readonly>
+                    <br>
+                    <label>Educational degrees:</label>
+                    <input type="text" id='education_degrees' value="{{ Docterform.education_degrees.value }}" readonly>
+                    {{Docterform.education_degrees}}
+                    <br>
+                    <label>Skill set:</label>
+                    <input type="text" id='skill_set' value="{{ Docterform.skill_set.value }}" readonly>
+                    {{Docterform.skill_set}}
+                    <br>
+                    <label>Clinic location:</label>
+                    <input type="text" id='id_clinic_location' name='clinic_location' value="{{ Docterform.clinic_location.value }}" readonly>
+                    <br>
+                    <label>Fees:</label>
+                    <input type="text" id='id_fees' name='fees' value="{{ Docterform.fees.value }}" readonly>
+                    <br>
+                    <label>Experience:</label>
+                    <input type="text" id='id_experience' name='experience' value="{{ Docterform.experience.value }}" readonly>
+                    <br>
+                    <button type="button" onclick="editForm('DocterForm','saveThree')">Edit</button>
+                    <button type="submit" id="saveThree" style="display: None;">Save</button>
+                </form>
+            </div>
+
+            <script>
+                document.getElementById('id_occupation').style.display = 'None';
+                document.getElementById('id_education_degrees').style.display = 'None';
+                document.getElementById('id_skill_set').style.display = 'None';
+            </script>
+
+        {% endif %}
+    </div>
+
+</body>
+<script>
+    function editForm(id, button_id){
+        var count = document.getElementById(id).elements.length;
+        for (i = 1; i < count; i++) {
+            document.getElementById(id).elements[i].readOnly = false;
+        }
+        document.getElementById(button_id).style.display = 'inline';
+        if (id === 'GeneralUserForm'){
+            document.getElementById('id_image').style.display = 'inline';
+            document.getElementById('id_gender').style.display = 'inline';
+            document.getElementById('gender').style.display = 'None';
+            document.getElementById('id_city').style.display = 'inline';
+            document.getElementById('city').style.display = 'None';
+        }
+        if (id === 'DocterForm') {
+            document.getElementById('id_occupation').style.display = 'inline';
+            document.getElementById('occupation').style.display = 'None';
+            document.getElementById('id_education_degrees').style.display = 'inline';
+            document.getElementById('education_degrees').style.display = 'None';
+            document.getElementById('id_skill_set').style.display = 'inline';
+            document.getElementById('skill_set').style.display = 'None';
+
+            $(".education_degrees1").chosen({width: "30%"})
+            options = document.getElementById('education_degrees').value
+            options = options.replace(/'/g, "");
+            options = JSON.parse(options)
+            $("#id_education_degrees").val(options);
+            $("#id_education_degrees").trigger("chosen:updated");
+
+            $(".skill_set1").chosen({width: "30%"})
+            options = document.getElementById('skill_set').value
+            options = options.replace(/'/g, "");
+            options = JSON.parse(options)
+            $("#id_skill_set").val(options);
+            $("#id_skill_set").trigger("chosen:updated");
+        }
+    }
+</script>
+</html>
