@@ -14,6 +14,29 @@ from .models import *
 def index(request):
     return render(request, 'patient/index.html')
 
+def blogs_view(request):
+    blogs = Blogs.objects.all()
+    context = {
+        'blogs': blogs
+    }
+    return render(request, 'patient/blogs.html', context=context)
+
+def newBlog_view(request):
+    if request.method == 'POST':
+        id = Doctor.objects.filter(email=request.user.email).values('first_name', 'last_name')
+        form = BlogForm(request.POST)
+        print(form.errors)
+        if form.is_valid():
+            instance = Blogs()
+            instance.title = form.data.get('title')
+            instance.description = form.data.get('description')
+            instance.blog = form.data.get('blog')
+            instance.author = f"Dr.{id[0].get('first_name')} {id[0].get('last_name')}"
+            instance.save()
+    form = BlogForm()
+    return render(request, 'admin/new-blog.html', {'form': form})
+
+
 def registration_view(request):
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES)

@@ -4,6 +4,80 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+    /* * {
+      box-sizing: border-box;
+    } */
+    
+    /* Add a gray background color with some padding */
+    /* body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f1f1f1;
+    } */
+    
+    /* Header/Blog Title */
+    /* .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    } */
+    
+    /* Create two unequal columns that floats next to each other */
+    /* Left column */
+    .leftcolumn {   
+      /* float: left; */
+      width: 99%;
+    }
+    
+    /* Right column */
+    /* .rightcolumn {
+      float: left;
+      width: 25%;
+      padding-left: 20px;
+    } */
+    
+    /* Fake image */
+    /* .fakeimg {
+      background-color: #aaa;
+      width: 100%;
+      padding: 20px;
+    } */
+    
+    /* Add a card effect for articles */
+    .card {
+       background-color: white;
+       padding: 20px;
+       margin-top: 20px;
+       margin-bottom: 20px;
+       margin: 20px 10px 20px 10px;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Footer */
+    /* .footer {
+      padding: 20px;
+      text-align: center;
+      background: #ddd;
+      margin-top: 20px;
+    } */
+    
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+    /* @media screen and (max-width: 800px) {
+      .leftcolumn, .rightcolumn {   
+        width: 100%;
+        padding: 0;
+      }
+    } */
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,7 +123,7 @@
     </header>
     <div>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffff;">
-            <a class="navbar-brand" href="#"><img id="logo" src="media/images/maven-logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="#"><img id="logo" src="{% static 'media/images/maven-logo.png' %}" alt="logo"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
@@ -61,16 +135,16 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#{% url 'index' %}"
+                        <a class="nav-link" href="{% url 'index' %}"
                             style="font-weight: bold; padding-right: 40px; font-family: 'Poppins', sans-serif;color: #45ac8b;">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#guide"
+                        <a class="nav-link" href="{% url 'index' %}"
                             style="font-weight: bold; padding-right: 50px; font-family: 'Poppins', sans-serif;">Patients & Visitors Guide</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#ABOUT"
+                        <a class="nav-link" href="{% url 'index' %}"
                             style="font-weight: bold; padding-right: 40px; font-family: 'Poppins', sans-serif;">About Us</a>
                     </li>
                     <li class="nav-item">
@@ -107,140 +181,32 @@
         </nav>
     </div>
 
-    <head>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100"
-                        src="media/images/cover-five.png"
-                        alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Talk to specialists at your convenience</h5>
-                        <p>Online Doctor Consultation</p>
-                        <div class="slide-btn">
-                            <button class="btn btn-1"><a href="#CONTACT">GET IN TOUCH</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100"
-                        src="media/images/cover-two.jpg"
-                        alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Less risk of transmission of any new illness</h5>
-                        <p>Online Doctor Consultation</p>
-                        <div class="slide-btn">
-                            <button class="btn btn-2"><a href="{% url 'user_doctors' %}">FIND DOCTOR</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="media/images/cover-three.png"
-                        alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Saves time</h5>
-                        <p>Online Doctor Consultation</p>
-                        <div class="slide-btn">
-                            <button class="btn btn-3"><a href="#guide"> VIEW LATEST NEWS</a></button>
-
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </head>
-    <br><br><br><br><br><br><br>
-
-
-    <section id="ABOUT">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="300"><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-                    <h3 style="text-align: center;font-weight: bold; color:black;">Welcome to <span style="text-align: center;font-weight: bold;color: #45ac8b;font-family: 'RocknRoll One', sans-serif;"> MAVEN</span></h3><br>
-                    <p style="text-align: justify; font-size: 17px;">At MAVEN, our utmost priority is to ensure safety and well being of our patients. To avoid adverse health conditions later, Maven came up with online video/tele consultations for people who couldn't reach the hospital. At this time, it is even more essential to get an experts consultation to keep ourselves healthy. 
-                        Taking precautions is always the right choice not only for you but also for your family members.</p>
-                </div>
-                <br> <br>
-                <div class="col-md-6" data-aos="fade-left" data-aos-delay="600">
-                    <img src="media/images/doctor.png" height="350" alt="">
-                </div>
-            </div> <br><br>
-            <hr>
-        </div>
-    </section>
-    <br>
-    <br><br>
-
-    <!-- DEPARTMENTS -->
-    <section>
-        <div class="container">
-            <h3 style=" padding-left: 150px; font-weight: bold; color:#45ac8b;font-family: 'RocknRoll One', sans-serif;" data-aos="fade-right" data-aos-delay="300"> OUR <span style="font-weight: bold;color:black" data-aos="fade-right" data-aos-delay="300"> SERVICES </span></h3><br><br>
-            <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-lg" style="height:90%" data-aos="fade-down" data-aos-delay="600"> 
-                        <a href="#" style="text-decoration: none;">
-                            <img src="/media/departments/dermatology.png" width="25%" 
-                                style="margin-left: 35%;margin-top: 10%;">
-
-                            <div class="card-body">
-                                <p style="text-transform: uppercase;text-align: center;font-weight: bold;color: #45ac8b">Psychiatrist</p>
-                                <div class="foot">
-                                    <p style="color: rgb(112, 111, 111);text-align: center;">The branch of medicine devoted to the diagnosis, prevention, study, and treatment of mental disorders....</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-lg" style="height:90%" data-aos="fade-down" data-aos-delay="900">
-                        <a href="#" style="text-decoration: none;">
-                            <img src="/media/departments/neurology.png" width="25%" 
-                                style="margin-left: 35%;margin-top: 10%;">
-
-                            <div class="card-body">
-                                <p style="text-transform: uppercase;text-align: center;font-weight: bold;color: #45ac8b">Psychologist</p>
-
-                                <div class="foot">
-                                    <p style="color: rgb(112, 111, 111);text-align: center;">Studies normal and abnormal mental states, perceptual, cognitive, emotional, and social processes...</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> <br><br>
-            <hr>
-        </div>
-    </section>
-    <!-- news -->
-    <br> <br>
-    <section id="guide">
-        <div class="container">
-            <h3 style=" padding-left: 150px; font-weight: bold; color:black;font-family: 'RocknRoll One', sans-serif;" data-aos="fade-right" data-aos-delay="300"> Patients & Visitors<span style="font-weight: bold;color:#45ac8b" data-aos="fade-right" data-aos-delay="300"> Guide </span></h3>
-
-            <div class="guide">
-                <div class="card-body">
-                    <ul style="padding-left: 15%;font-size: 18px;" data-aos="fade-left" padd>
-                        <li data-aos="fade-up">Appointments can be scheduled through online.</li>
-                        <li data-aos="fade-up">Patients are required to carry an insurance card, identification card, or passport.</li>
-                        <li data-aos="fade-up">International visitors are required to carry an identification card or passport for registration purposes.</li>
-                        <li data-aos="fade-up">For further assistance, please send us an email at maven@gmail.com</li>
-                    </ul>
-                </div>
-<br>
-
-
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+              <h2>TITLE HEADING</h2>
+              <h5>Title description, Dec 7, 2017</h5>
+              <p>Dr. Muhammad Umar</p>
+              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
             </div>
         </div>
-    </section>
+    </div>
+
+    {% for blog in blogs %}
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                  <h2>{{blog.title}}</h2>
+                  <h5>{{blog.description}}, {{blog.date}}</h5>
+                  <p>{{blog.author}}</p>
+                  <p>{{blog.blog}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+
      <!-- FOOTER -->
      <footer style="background-color: #1b1b1b; color: rgba(255, 255, 255, 0.501);" >
         <div class="container" >

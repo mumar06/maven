@@ -62,3 +62,9 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         exclude = ['doctor','schedules', 'status']
+
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blogs
+        exclude = ['name','author']

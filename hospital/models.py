@@ -107,3 +107,10 @@ class Appointment(models.Model):
     @classmethod
     def all_unchecked_appointment(cls,id):
         return cls.objects.filter(status = 'unchecked', doctor=id).all()
+
+class Blogs(models.Model):
+    title = models.CharField(max_length=20)
+    description = models.CharField(max_length=20)
+    blog = models.TextField(max_length=20)
+    author = models.CharField(max_length=20)
+    date = models.TimeField(auto_now=True)
