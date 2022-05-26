@@ -1,1 +1,1 @@
-Hello {{first_name}}, Welcome to Health Care Hospital!
+Hello {{first_name}}, Welcome to MAVEN!
